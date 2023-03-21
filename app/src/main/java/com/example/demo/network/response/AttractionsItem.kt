@@ -10,7 +10,7 @@ data class AttractionsItem(
     val address: String,
     @SerializedName("official_site")
     val officialSite: String,
-    val images: List<Image>
+    var images: List<Image>
 ) {
     data class Image(
         val src: String,
