@@ -24,11 +24,7 @@ class AttractionsAdapter(
     )
 
     override fun onBindViewHolder(holder: AttractionsViewHolder, position: Int) {
-        val attractionsItem = attractions[position]
-        if (attractionsItem.images.isEmpty()) {
-            attractionsItem.images += AttractionsItem.Image("", "")
-        }
-        holder.attractionsItemBinding.attractionsItem = attractionsItem
+        holder.attractionsItemBinding.attractionsItem = attractions[position]
     }
 
     inner class AttractionsViewHolder(

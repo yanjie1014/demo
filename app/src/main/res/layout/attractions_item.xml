@@ -19,7 +19,7 @@
             android:layout_width="160dp"
             android:layout_height="90dp"
             android:scaleType="fitXY"
-            app:url="@{attractionsItem.images.get(0).src}"
+            app:url="@{attractionsItem.images.size == 0 ? null : attractionsItem.images.get(0).src}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
