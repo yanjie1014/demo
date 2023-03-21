@@ -15,7 +15,7 @@
 
 
         <com.example.demo.view.component.WebImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_view"
             android:layout_width="160dp"
             android:layout_height="90dp"
             android:scaleType="fitXY"
@@ -34,8 +34,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:maxLines="1"
-            app:layout_constraintLeft_toRightOf="@id/imageView"
-            app:layout_constraintTop_toTopOf="@id/imageView"
+            app:layout_constraintLeft_toRightOf="@id/image_view"
+            app:layout_constraintTop_toTopOf="@id/image_view"
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView

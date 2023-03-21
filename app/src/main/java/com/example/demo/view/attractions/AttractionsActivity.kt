@@ -1,6 +1,6 @@
 package com.example.demo.view.attractions
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -10,10 +10,14 @@ import com.example.demo.R
 import com.example.demo.databinding.ActivityAttractionsBinding
 import com.example.demo.network.AttractionsApi
 import com.example.demo.network.Resource
+import com.example.demo.network.response.AttractionsItem
 import com.example.demo.repository.AttractionsRepository
 import com.example.demo.view.BaseActivity
+import com.example.demo.view.attractions.listener.AttractionsItemClickListener
+import com.example.demo.view.detail.DetailActivity
+import com.google.gson.Gson
 
-class AttractionsActivity : BaseActivity<AttractionsViewModel, ActivityAttractionsBinding, AttractionsRepository>() {
+class AttractionsActivity : BaseActivity<AttractionsViewModel, ActivityAttractionsBinding, AttractionsRepository>(), AttractionsItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +30,7 @@ class AttractionsActivity : BaseActivity<AttractionsViewModel, ActivityAttractio
                     binding.attractionsRecyclerView.also {
                         it.layoutManager = LinearLayoutManager(this)
                         it.setHasFixedSize(true)
-                        it.adapter = AttractionsAdapter(resource.value.attractions)
+                        it.adapter = AttractionsAdapter(resource.value.attractions, this)
                     }
                 }
                 is Resource.Failure -> {
@@ -45,4 +49,10 @@ class AttractionsActivity : BaseActivity<AttractionsViewModel, ActivityAttractio
     }
 
     override fun getViewModel() = AttractionsViewModel::class.java
+    override fun onClick(attractionsItem: AttractionsItem) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("Attractions", Gson().toJson(attractionsItem))
+        startActivity(intent)
+    }
+
 }

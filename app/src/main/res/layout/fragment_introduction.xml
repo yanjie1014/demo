@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="attractionsItem"
+            type="com.example.demo.network.response.AttractionsItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.detail.IntroductionFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.demo.view.component.WebImageView
+                    android:id="@+id/web_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:url="@{attractionsItem.images.size() == 0 ? null : attractionsItem.images.get(0).src}" />
+
+                <TextView
+                    android:id="@+id/title_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:maxLines="1"
+                    android:text="@{attractionsItem.name}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="@id/web_image_view"
+                    app:layout_constraintRight_toRightOf="@id/web_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/web_image_view" />
+
+                <TextView
+                    android:id="@+id/introduction_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{attractionsItem.introduction}"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="@id/web_image_view"
+                    app:layout_constraintRight_toRightOf="@id/web_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/title_textview" />
+
+                <TextView
+                    android:id="@+id/open_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{attractionsItem.openTime}"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="@id/web_image_view"
+                    app:layout_constraintRight_toRightOf="@id/web_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/introduction_textview" />
+
+                <TextView
+                    android:id="@+id/address_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{attractionsItem.address}"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="@id/web_image_view"
+                    app:layout_constraintRight_toRightOf="@id/web_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/open_textview" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

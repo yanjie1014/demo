@@ -8,8 +8,7 @@ data class AttractionsItem(
     @SerializedName("open_time")
     val openTime: String,
     val address: String,
-    @SerializedName("official_site")
-    val officialSite: String,
+    val url: String,
     var images: List<Image>
 ) {
     data class Image(
